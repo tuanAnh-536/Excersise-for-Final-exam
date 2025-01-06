@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+void swap(int *a, int *b){
+    int temp=*a;
+    *a=*b;
+    *b=temp;
+}
+int main(){
+    int x,y;
+    cout<<"Hay nhap 2 so x va y:  ";
+    cin>>x>>y;
+    swap(x,y);
+    cout<<"Gia tri sau khi hoan doi cua hai so la: "<<"\n"<<"x= "<<x<<"\n"<<"y= "<<y<<endl;
+}
