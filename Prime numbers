@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+#include <math.h>
+void Prime_num(int n){
+    int count;
+    for(int i=2;i<=sqrt(n);i++){
+        if(n%i==0){cout<<"Số đó không là số nguyên tố";
+            return; ///return dùng để kết thúc hàm Prime_num
+                    ///không dùng return câu lệnh thứ 2 sẽ được in ra dù điều kiện không thỏa
+        }
+    }
+    cout<<"So do la so nguyen to";
+}
+int main(){
+    int n;
+    cin>>n;
+    Prime_num(n);
+}
