@@ -2,7 +2,9 @@
 using namespace std;
 #include <math.h>
 void Factorial(int n){
-    int fact=1;
+if(n<0){cout<<"Giai thua khong xac dinh cho so am";
+       return;}
+    long long fact=1;///Tránh tràn bộ nhớ
     for(int i=1;i<=n;i++){
         fact*=i;}
         cout<<fact<<endl;
