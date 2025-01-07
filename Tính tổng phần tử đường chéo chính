@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Nhập giá trị vào mảng
+void Input(int **arr, int m, int n) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("Nhập phần tử arr[%d][%d]: ", i, j);
+            scanf("%d", &arr[i][j]);
+        }
+    }
+}
+
+// Tính tổng đường chéo chính
+void Taomang(int **arr, int m, int n) {
+    int sum = 0;
+    for (int i = 0; i < m && i < n; i++) { // Đảm bảo không vượt kích thước
+        sum += arr[i][i];
+    }
+    printf("Tổng đường chéo chính: %d\n", sum);
+}
+
+// Hiển thị mảng
+void display(int **arr, int m, int n) {
+    printf("Mảng hai chiều:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int m, n;
+
+    // Nhập kích thước mảng
+    printf("Nhập số dòng và số cột: ");
+    scanf("%d %d", &m, &n);
+
+    // Cấp phát bộ nhớ cho mảng động
+    int **a = (int **)malloc(m * sizeof(int *));
+    for (int i = 0; i < m; i++) {
+        a[i] = (int *)malloc(n * sizeof(int));
+    }
+
+    // Gọi các hàm xử lý
+    Input(a, m, n);
+    display(a, m, n);
+    Taomang(a, m, n);
+
+    // Giải phóng bộ nhớ
+    for (int i = 0; i < m; i++) {
+        free(a[i]);
+    }
+    free(a);
+
+    return 0;
+}
