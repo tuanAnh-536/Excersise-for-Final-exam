@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int m, n;
+    printf("Hãy nhập số dòng và số cột: ");
+    scanf("%d %d", &m, &n);
+
+    // Cấp phát bộ nhớ cho mảng động hai chiều
+    int **arr = (int**)malloc(m * sizeof(int*));
+    for (int i = 0; i < m; i++) {
+        arr[i] = (int*)malloc(n * sizeof(int));
+    }
+
+    // Nhập giá trị cho mảng
+    printf("Hãy nhập giá trị từng phần tử trong mảng:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("Nhập phần tử hàng %d và cột %d: ", i + 1, j + 1);
+            scanf("%d", &arr[i][j]);
+        }
+    }
+
+    // In giá trị của mảng
+    printf("Các giá trị trong mảng là:\n");
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%d ", arr[i][j]);
+        }
+        printf("\n"); // Xuống dòng sau mỗi hàng
+    }
+
+    // Giải phóng bộ nhớ
+    for (int i = 0; i < m; i++) {
+        free(arr[i]);
+    }
+    free(arr);
+
+    return 0;
+}
